@@ -1,2 +1,14 @@
 # pix-payment
-pix-simulator
+
+Keywords:
+- Microsservices;
+- Go;
+- React.js;
+- Next.js;
+- Nest.js;
+- Kubernets;
+- Docker;
+- Kafka;
+- Elastic Stack;
+- gRPC;
+- Fullcycle;
