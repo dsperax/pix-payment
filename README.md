@@ -1,4 +1,4 @@
-# pix-payment
+# pix-payment-simulator
 
 Keywords:
 - Microsservices;
