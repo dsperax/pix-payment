@@ -2,10 +2,10 @@
 
 Keywords:
 - Microsservices;
-- Go;
 - React.js;
-- Next.js;
-- Nest.js;
+- Next.js (frontend);
+- Nest.js (backend);
+- Go;
 - Kubernets;
 - Docker;
 - Kafka;
