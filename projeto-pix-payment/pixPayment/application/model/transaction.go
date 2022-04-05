@@ -1,100 +1,61 @@
 package model
 
 import (
-	"errors"
-	"github.com/asaskevich/govalidator"
-	uuid "github.com/satori/go.uuid"
-	"time"
+	"encoding/json"
+	"fmt"
+
+	"github.com/go-playground/validator/v10"
 )
-
-const (
-	TransactionPending   string = "pending"
-	TransactionCompleted string = "completed"
-	TransactionError     string = "error"
-	TransactionConfirmed string = "confirmed"
-)
-
-type TransactionRepositoryInterface interface {
-	Register(transaction *Transaction) error
-	Save(transaction *Transaction) error
-	Find(id string) (*Transaction, error)
-}
-
-type Transactions struct {
-	Transaction []Transaction
-}
 
 type Transaction struct {
-	Base              `valid:"required"`
-	AccountFrom       *Account `valid:"-"`
-	AccountFromID     string   `gorm:"column:account_from_id;type:uuid;" valid:"notnull"`
-	Amount            float64  `json:"amount" gorm:"type:float" valid:"notnull"`
-	PixKeyTo          *PixKey  `valid:"-"`
-	PixKeyIdTo        string   `gorm:"column:pix_key_id_to;type:uuid;" valid:"notnull"`
-	Status            string   `json:"status" gorm:"type:varchar(20)" valid:"notnull"`
-	Description       string   `json:"description" gorm:"type:varchar(255)" valid:"-"`
-	CancelDescription string   `json:"cancel_description" gorm:"type:varchar(255)" valid:"-"`
-}
-
-func init() {
-	govalidator.SetFieldsRequiredByDefault(true)
+	ID           string  `json:"id" validate:"required,uuid4"`
+	AccountID    string  `json:"accountId" validate:"required,uuid4"`
+	Amount       float64 `json:"amount" validate:"required,numeric"`
+	PixKeyTo     string  `json:"pixKeyTo" validate:"required"`
+	PixKeyKindTo string  `json:"pixKeyKindTo" validate:"required"`
+	Description  string  `json:"description" validate:"required"`
+	Status       string  `json:"status" validate:"-"`
+	Error        string  `json:"error"`
 }
 
 func (t *Transaction) isValid() error {
-	_, err := govalidator.ValidateStruct(t)
-
-	if t.Amount <= 0 {
-		return errors.New("the amount must be greater than 0")
-	}
-
-	if t.Status != TransactionPending && t.Status != TransactionCompleted && t.Status != TransactionError {
-		return errors.New("invalid status for the transaction")
-	}
-
-	if t.PixKeyTo.AccountID == t.AccountFromID {
-		return errors.New("the source and destination account cannot be the same")
-	}
-
+	v := validator.New()
+	err := v.Struct(t)
 	if err != nil {
+		fmt.Errorf("Error during Transaction validation: %s", err.Error())
 		return err
 	}
 	return nil
 }
 
-func (t *Transaction) Complete() error {
-	t.Status = TransactionCompleted
-	t.UpdatedAt = time.Now()
-	err := t.isValid()
-	return err
+func (t *Transaction) ParseJson(data []byte) error {
+	err := json.Unmarshal(data, t)
+	if err != nil {
+		return err
+	}
+
+	err = t.isValid()
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
-func (t *Transaction) Cancel(description string) error {
-	t.Status = TransactionError
-	t.CancelDescription = description
-	t.UpdatedAt = time.Now()
+func (t *Transaction) ToJson() ([]byte, error) {
 	err := t.isValid()
-	return err
-}
-
-func NewTransaction(accountFrom *Account, amount float64, pixKeyTo *PixKey, description string, id string) (*Transaction, error) {
-	transaction := Transaction{
-		AccountFrom:   accountFrom,
-		AccountFromID: accountFrom.ID,
-		Amount:        amount,
-		PixKeyTo:      pixKeyTo,
-		PixKeyIdTo:    pixKeyTo.ID,
-		Status:        TransactionPending,
-		Description:   description,
-	}
-	if id == "" {
-		transaction.ID = uuid.NewV4().String()
-	} else {
-		transaction.ID = id
-	}
-	transaction.CreatedAt = time.Now()
-	err := transaction.isValid()
 	if err != nil {
 		return nil, err
 	}
-	return &transaction, nil
+
+	result, err := json.Marshal(t)
+	if err != nil {
+		return nil, nil
+	}
+
+	return result, nil
+}
+
+func NewTransaction() *Transaction {
+	return &Transaction{}
 }
