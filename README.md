@@ -6,7 +6,7 @@
 
 ![image](https://user-images.githubusercontent.com/76974801/161656206-649ab6b5-92be-4328-9d8d-716281d630c9.png)
 
-## Structures and layers:
+### Structures and layers:
 - application:
    * factory: instantiate objects with many dependencies;
    * grpc: server and services available via gRPC;
@@ -19,7 +19,7 @@
   * db: ORM configuration and database interface;
   * repository: data persistence. Usually called by "usecases";
 
-## Keywords:
+### Keywords:
 - Hexagonal architecture / Ports and Adapters;
 - Microsservice;
 - React.js;
@@ -36,3 +36,9 @@
 - Synchronous (Key consult);
 - Asynchronous (Transations);
 - DDD;
+
+## How to use:
+
+Run ```docker-compose up -d```
+
+You can use ```docker-compose ps``` to see all containers.
