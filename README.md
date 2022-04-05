@@ -12,6 +12,8 @@ Keywords:
 - Elastic Stack;
 - gRPC;
 - Fullcycle;
+- Synchronous (Key consult);
+- Asynchronous (Transations);
 
 (PT-BR) Microsserviço que irá intermediar a transação entre dois bancos. Ele recebe a transação e encaminha para o banco destino, status: pending, recebe a confirmação e muda o status para confirmed e envia a confirmação para o banco de origem, informando que o banco de destino processou o pagamento. O banco de origem nos envia uma confirmação de status completed.
 
