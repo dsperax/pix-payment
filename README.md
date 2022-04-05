@@ -36,6 +36,7 @@
 - Synchronous (Key consult);
 - Asynchronous (Transations);
 - DDD;
+- Zookeeper service discovery;
 
 ## How to use:
 
