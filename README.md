@@ -44,3 +44,7 @@ Run ```docker-compose up``` on apache-kafka folder;
 Then Run ```docker-compose up -d``` on pixPayment folder;
 
 You can use ```docker-compose ps``` to see all containers.
+
+Access the principal container with ````docker exec -t pixpayment_app_1 bash```
+
+Create go.mod with ```go mod init github.com/dsperax/pix-payment/projeto-pix-payment/pixPayment```
