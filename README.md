@@ -39,6 +39,7 @@
 
 ## How to use:
 
-Run ```docker-compose up -d```
+Run ```docker-compose up``` on apache-kafka folder;
+Then Run ```docker-compose up -d``` on pixPayment folder;
 
 You can use ```docker-compose ps``` to see all containers.
