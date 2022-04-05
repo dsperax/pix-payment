@@ -25,9 +25,10 @@
 - React.js;
 - Next.js (frontend);
 - Nest.js (backend);
-- Go;
+- Golang;
 - Kubernets;
 - Docker;
+- Postgres;
 - Kafka;
 - Elastic Stack;
 - gRPC;
