@@ -19,7 +19,7 @@
   * db: ORM configuration and database interface;
   * repository: data persistence. Usually called by "usecases";
 
-##Keywords:
+## Keywords:
 - Hexagonal architecture / Ports and Adapters;
 - Microsservice;
 - React.js;
