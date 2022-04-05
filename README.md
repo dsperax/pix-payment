@@ -7,7 +7,8 @@
 ![image](https://user-images.githubusercontent.com/76974801/161656206-649ab6b5-92be-4328-9d8d-716281d630c9.png)
 
 Keywords:
-- Microsservices;
+- Hexagonal architecture / Ports and Adapters;
+- Microsservice;
 - React.js;
 - Next.js (frontend);
 - Nest.js (backend);
