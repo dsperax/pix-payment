@@ -56,3 +56,6 @@
 - Run ```docker exec -it pixpayment-app-1 bash```;
 - Run server ```go run cmd/main.go```;
 - Run ```evans -r repl```
+
+### Server:
+- Run ```go run main.go```;
