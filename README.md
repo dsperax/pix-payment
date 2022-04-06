@@ -37,14 +37,19 @@
 - Asynchronous (Transations);
 - DDD;
 - Zookeeper service discovery;
+- Protocol Buffers;
+
+## Some info:
+
+Run kafka ```docker-compose up``` on apache-kafka folder;
+Run project```docker-compose up -d``` on pixPayment folder;
+You can use ```docker-compose ps``` to see all containers.
+Access the principal container with ```docker exec -it pixpayment-app-1 bash```
+(if dont create go.mod file) Create go.mod with ```go mod init github.com/dsperax/pix-payment/projeto-pix-payment/pixPayment```
+Run tests ```go test ./...```
+(generate pb inside grpc) ```protoc --go_out=application/grpc/pb --go_opt=paths=source_relative --go-grpc_out=application/grpc/pb --go-grpc_opt=paths=source_relative --proto_path=application/grpc/protofiles application/grpc/protofiles/*.proto```
 
 ## How to use:
 
-Run ```docker-compose up``` on apache-kafka folder;
-Then Run ```docker-compose up -d``` on pixPayment folder;
-
-You can use ```docker-compose ps``` to see all containers.
-
-Access the principal container with ```docker exec -t pixpayment_app_1 bash```
-
-Create go.mod with ```go mod init github.com/dsperax/pix-payment/projeto-pix-payment/pixPayment```
+Run ```docker-compose up -d``` on pixPayment folder;
+run server ```go run cmd/main.go```
