@@ -53,4 +53,5 @@
 
 - Run ```docker-compose up -d``` on pixPayment folder;
 - Run ```docker exec -it pixpayment-app-1 bash```;
-- run server ```go run cmd/main.go```;
+- Run server ```go run cmd/main.go```;
+- Run ```evans -r repl```
