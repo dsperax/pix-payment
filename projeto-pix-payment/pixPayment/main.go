@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "github.com/spf13/cobra/cobra/cmd"
+import "github.com/dsperax/pix-payment/projeto-pix-payment/pixPayment/cmd"
 
 func main() {
 	cmd.Execute()
