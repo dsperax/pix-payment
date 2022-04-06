@@ -51,6 +51,7 @@
 
 ## How to use:
 
+### gRPC:
 - Run ```docker-compose up -d``` on pixPayment folder;
 - Run ```docker exec -it pixpayment-app-1 bash```;
 - Run server ```go run cmd/main.go```;
