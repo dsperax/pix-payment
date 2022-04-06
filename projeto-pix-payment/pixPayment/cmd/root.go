@@ -17,8 +17,9 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/spf13/cobra"
 	"os"
+
+	"github.com/spf13/cobra"
 
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/viper"
@@ -28,8 +29,8 @@ var cfgFile string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "codepix",
-	Short: "Use codepix software to intermediate bank transaction with apache kafka and grpc",
+	Use:   "pixpayment",
+	Short: "Use pixpayment software to intermediate bank transaction with apache kafka and grpc",
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
@@ -51,7 +52,7 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.codepix.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.pixpayment.yaml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
@@ -71,9 +72,9 @@ func initConfig() {
 			os.Exit(1)
 		}
 
-		// Search config in home directory with name ".codepix" (without extension).
+		// Search config in home directory with name ".pixpayment" (without extension).
 		viper.AddConfigPath(home)
-		viper.SetConfigName(".codepix")
+		viper.SetConfigName(".pixpayment")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
