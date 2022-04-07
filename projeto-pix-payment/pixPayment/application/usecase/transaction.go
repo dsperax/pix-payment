@@ -85,5 +85,4 @@ func (t *TransactionUseCase) Error(transactionId string, reason string) (*model.
 	}
 
 	return transaction, nil
-
 }

@@ -2,9 +2,10 @@ package model
 
 import (
 	"errors"
+	"time"
+
 	"github.com/asaskevich/govalidator"
 	uuid "github.com/satori/go.uuid"
-	"time"
 )
 
 const (
