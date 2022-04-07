@@ -60,7 +60,7 @@ services:
     image: confluentinc/cp-kafka:latest
     depends_on:
       - kafka
-    command: >
+    command: 
       bash -c
         "sleep 5s &&
         kafka-topics --create --topic=transactions --if-not-exists --bootstrap-server=kafka:9092 &&
