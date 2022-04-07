@@ -56,7 +56,6 @@
 
 ## How to use:
 
-### Server:
 - Run ```docker-compose up -d``` on pixPayment folder;
 - Run ```docker exec -it pixpayment-app-1 bash```;
-- Run ```go run main.go```; (-p PortNumber to change)
+- Run ```go run main.go all```;
